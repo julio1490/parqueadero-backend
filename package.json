@@ -1,0 +1,24 @@
+{
+  "name": "parqueadero-backend",
+  "version": "1.0.0",
+  "description": "Backend para el Sistema de Gestión de Parqueadero, desarrollado con Node.js, Express y MongoDB Atlas bajo metodología Scrum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julio1490/parqueadero-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/julio1490/parqueadero-backend/issues"
+  },
+  "homepage": "https://github.com/julio1490/parqueadero-backend#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
