@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/julio1490/parqueadero-backend#readme",
   "dependencies": {
+    "dotenv": "^18.0.6",
     "express": "^5.2.1"
   }
 }
