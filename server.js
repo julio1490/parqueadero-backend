@@ -3,13 +3,13 @@ require('dotenv').config();
 const express = require('express');
 const conectarDB = require('./src/config/db');
 const parqueaderoRoutes = require('./src/routes/parqueaderoRoutes');
-
+const healthRoutes = require('./src/routes/healthRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Permitir recibir datos en formato JSON
 app.use(express.json());
-
+app.use('/api/health', healthRoutes);
 // Ruta principal
 app.get('/', (req, res) => {
     res.json({
