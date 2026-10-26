@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/julio1490/parqueadero-backend#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "dotenv": "^18.0.6",
     "express": "^5.2.1",
     "mongoose": "^9.11.1"
