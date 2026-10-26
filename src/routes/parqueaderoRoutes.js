@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const controller = require('../controllers/parqueaderoController');
 
-const parqueaderoController = require('../controllers/parqueaderoController');
-
-router.get('/estado', parqueaderoController.consultarEstado);
+router.get('/estado', controller.consultarEstado);
+router.post('/ingresar', controller.registrarVehiculo);
+router.get('/vehiculos', controller.listarVehiculos);
 
 module.exports = router;
-
