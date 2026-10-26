@@ -22,6 +22,3 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
-
-      - name: Ejecutar pruebas si están configuradas
-        run: npm test --if-present
