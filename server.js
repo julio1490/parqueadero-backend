@@ -9,20 +9,22 @@ const authRoutes = require("./src/routes/authRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Leer datos enviados en formato JSON antes de cargar las rutas
+// Middleware
 app.use(express.json());
-const router = express.Router();
 
+// Rutas
 app.use("/api/health", healthRoutes);
 app.use("/api/parqueadero", parqueaderoRoutes);
 app.use("/api/auth", authRoutes);
 
+// Ruta principal
 app.get("/", (req, res) => {
   res.json({
-    message: "Servidor del Sistema de Parqueadero funcionando correctamente",
+    mensaje: "Servidor del Sistema de Parqueadero funcionando correctamente",
   });
 });
 
+// Iniciar servidor
 const iniciarServidor = async () => {
   try {
     await conectarDB();
