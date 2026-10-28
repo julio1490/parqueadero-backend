@@ -1,5 +1,5 @@
-const bcrypt = require('bcryptjs');
-const Usuario = require('../models/usuario');
+const bcrypt = require("bcryptjs");
+const Usuario = require("../models/usuario");
 
 const crearUsuario = async (datos) => {
   const passwordHash = await bcrypt.hash(datos.contrasena, 10);
@@ -8,7 +8,7 @@ const crearUsuario = async (datos) => {
     nombre: datos.nombre,
     correo: datos.correo,
     passwordHash,
-    rol: datos.rol
+    rol: datos.rol,
   });
 
   return {
@@ -16,39 +16,47 @@ const crearUsuario = async (datos) => {
     nombre: usuario.nombre,
     correo: usuario.correo,
     rol: usuario.rol,
-    activo: usuario.activo
+    activo: usuario.activo,
   };
 };
 
 const listarUsuarios = async () => {
-  return Usuario.find().select('-passwordHash');
+  return Usuario.find().select("-passwordHash");
 };
 
 const buscarUsuario = async (id) => {
-  return Usuario.findById(id).select('-passwordHash');
+  return Usuario.findById(id).select("-passwordHash");
 };
 
 const actualizarUsuario = async (id, datos) => {
   const cambios = {};
 
-  for (const campo of ['nombre', 'correo', 'rol', 'activo']) {
+  for (const campo of ["nombre", "correo", "rol", "activo"]) {
     if (datos[campo] !== undefined) cambios[campo] = datos[campo];
   }
 
   return Usuario.findByIdAndUpdate(id, cambios, {
     new: true,
-    runValidators: true
-  }).select('-passwordHash');
+    runValidators: true,
+  }).select("-passwordHash");
 };
 
 const eliminarUsuario = async (id) => {
-  return Usuario.findByIdAndDelete(id).select('-passwordHash');
+  return Usuario.findByIdAndDelete(id).select("-passwordHash");
+};
+
+const buscarUsuarioParaLogin = async (correo) => {
+  return Usuario.findOne({
+    correo: correo.toLowerCase().trim(),
+    activo: true,
+  }).select("+passwordHash");
 };
 
 module.exports = {
   crearUsuario,
   listarUsuarios,
   buscarUsuario,
+  buscarUsuarioParaLogin,
   actualizarUsuario,
-  eliminarUsuario
+  eliminarUsuario,
 };
