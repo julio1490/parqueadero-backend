@@ -1,4 +1,5 @@
-const Vehiculo = require('../models/Vehiculo');
+const Vehiculo = require('../models/vehiculo');
+
 
 const obtenerEstado = () => ({
   nombre: 'Sistema de Gestión de Parqueadero',
